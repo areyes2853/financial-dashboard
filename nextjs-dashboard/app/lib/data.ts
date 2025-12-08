@@ -9,7 +9,12 @@ import {
 } from './definitions';
 import { formatCurrency } from './utils';
 
-const sql = postgres(process.env.POSTGRES_URL!, { ssl: false });
+const sql = postgres(process.env.POSTGRES_URL!, {
+  ssl: false,
+  connection: {
+    application_name: 'financial-dashboard',
+  },
+});
 
 export async function fetchRevenue() {
   try {
